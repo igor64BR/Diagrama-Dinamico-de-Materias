@@ -1,15 +1,13 @@
 import Subject from "@/_infra/entities/Subject";
-import { Box } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 
 export default function SubjectBox(props: { subject: Subject }) {
   return (
     <Box
       sx={{
-        backgroundColor: "white",
+        backgroundColor: props.subject.color,
         color: "black",
         borderRadius: 5,
-        minHeight: 100,
-        minWidth: 200,
       }}
       display={"flex"}
       justifyContent={"center"}
@@ -18,15 +16,16 @@ export default function SubjectBox(props: { subject: Subject }) {
       padding={1}
     >
       <Box>
-        {props.subject.period} - {props.subject.code}
+        {props.subject.code}
       </Box>
+    <Divider sx={{ width: '100%', backgroundColor: 'black', my: .5 }} />
       <Box
         flex={1}
         display={"flex"}
         justifyContent={"center"}
         alignItems={"center"}
       >
-        {props.subject.name}
+        <Typography align="center">{props.subject.name}</Typography>
       </Box>
     </Box>
   );

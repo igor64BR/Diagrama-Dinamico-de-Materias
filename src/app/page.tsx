@@ -1,6 +1,6 @@
 "use client";
 
-import { Box } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import SubjectBox from "./components/SubjectBox";
 import subjects from "@/_data/subjects";
@@ -18,7 +18,17 @@ export default function Home() {
     loadSubjectsGroupedByPeriod();
   }, []);
 
-  const loadSubjectsGroupedByPeriod = () => {};
+  const loadSubjectsGroupedByPeriod = () => {
+    const grouped = subjects.reduce((acc, x) => {
+      if (!acc[x.period ?? -1]) {
+        acc[x.period ?? -1] = [];
+      }
+      acc[x.period ?? -1].push(x);
+      return acc;
+    }, {} as { [key: number]: Subject[] });
+
+    setSubjectsGroupedByPeriod(grouped);
+  };
 
   if (!isClient) {
     return null;
@@ -31,9 +41,29 @@ export default function Home() {
       alignItems={"center"}
       height={"100vh"}
     >
-      {subjects.map((x) => {
-        return <SubjectBox key={x.code} subject={x} />;
-      })}
+      {Object.entries(subjectsGroupedByPeriod).map(([period, subjects], index) => (Number(period) === -1 
+      ? null 
+      : (
+          <Box key={index} display={"flex"} flexDirection={"column"} height={"80%"} margin={2}>
+            <Typography
+              align="center"
+              variant="h5"
+              marginBottom={2}
+            >
+              {`${Number(period) > 0 ? `${period}º` : 'Sem'} Período`}
+            </Typography>
+
+            <Box display={"flex"} justifyContent="space-between" flexDirection={"column"} flexGrow={1}>
+              {subjects.map((subject, index) => (
+                <Box key={index}>
+                  <SubjectBox subject={subject} />
+                  <Divider sx={{my: 1}}/>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        )
+        ))}
     </Box>
   );
 }

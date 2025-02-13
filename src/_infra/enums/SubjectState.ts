@@ -7,4 +7,7 @@ export enum SubjectState {
 
   // Subjects completed already
   DONE,
+
+  // Subjects ongoing
+  ONGOING,
 }
