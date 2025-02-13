@@ -20,7 +20,7 @@ const subjects: Subject[] = [
   new Subject("COM06992", 3, "ESTRUTURAS DE DADOS I", ["COM06842"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
   new Subject("COM10016", 3, "SISTEMAS DE APOIO À DECISÃO", ["COM06985"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
   new Subject("COM10076", 4, "ARQUITETURA DE COMPUTADORES", ["COM06842"], SubjectType.MANDATORY, SubjectState.ONGOING),
-  new Subject("ENG05510", 4, "ESTATÍSTICA BÁSICA", ["MPA06839"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
+  new Subject("ENG05510", 4, "ESTATÍSTICA BÁSICA", ["MPA06839"], SubjectType.MANDATORY, SubjectState.DONE),
   new Subject("COM10078", 4, "ESTRUTURA DE DADOS II", ["COM06992"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
   new Subject("COM10082", 4, "PROGRAMAÇÃO II", ["COM06992"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
   new Subject("COM10275", 4, "ENGENHARIA DE REQUISITOS DE SOFTWARE", ["COM10015"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),

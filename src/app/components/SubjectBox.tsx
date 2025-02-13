@@ -5,8 +5,8 @@ export default function SubjectBox(props: { subject: Subject }) {
   return (
     <Box
       sx={{
-        backgroundColor: props.subject.color,
-        color: "black",
+        backgroundColor: props.subject.color.bgColor,
+        color: props.subject.color.fontColor,
         borderRadius: 5,
       }}
       display={"flex"}

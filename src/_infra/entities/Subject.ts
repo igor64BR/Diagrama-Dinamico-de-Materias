@@ -12,14 +12,14 @@ export default class Subject {
     public state: SubjectState,
   ) { }
 
-  private static colorMap: Record<SubjectState, string> = {
-    [SubjectState.AVAILABLE]: "yellow",
-    [SubjectState.UNAVAILABLE]: "red",
-    [SubjectState.DONE]: "green",
-    [SubjectState.ONGOING]: "blue",
+  private static colorMap: Record<SubjectState, { bgColor: string, fontColor: string }> = {
+    [SubjectState.AVAILABLE]: {bgColor: "white", fontColor: "black"},
+    [SubjectState.UNAVAILABLE]: {bgColor: "red", fontColor: "white"},
+    [SubjectState.DONE]: {bgColor: "green", fontColor: "white"},
+    [SubjectState.ONGOING]: {bgColor: "blue", fontColor: "white"},
   };
 
-  public get color(): string {
+  public get color() {
     return Subject.colorMap[this.state];;
   }
 }
