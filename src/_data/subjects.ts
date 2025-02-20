@@ -94,19 +94,23 @@ const subjects: Subject[] = [
   new Subject("COM11091", null, "Tópicos Especiais em Sistemas Web I", ["COM10396"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE)
 ];
 
-for (const subject of subjects) {
-  if ([SubjectState.DONE, SubjectState.ONGOING].includes(subject.state)) {
-    continue;
+export const updateSubjectsState = () => {
+  for (const subject of subjects) {
+    if ([SubjectState.DONE, SubjectState.ONGOING].includes(subject.state)) {
+      continue;
+    }
+
+    const requirements = subjects.filter(x => subject.requirements.includes(x.code));
+
+    if (requirements.some(x => x.state !== SubjectState.DONE)) {
+      subject.state = SubjectState.UNAVAILABLE;
+      continue;
+    }
+
+    subject.state = SubjectState.AVAILABLE;
   }
-
-  const requirements = subjects.filter(x => subject.requirements.includes(x.code));
-
-  if (requirements.some(x => x.state !== SubjectState.DONE)) {
-    subject.state = SubjectState.UNAVAILABLE;
-    continue;
-  }
-
-  subject.state = SubjectState.AVAILABLE;
 }
+
+updateSubjectsState();
 
 export default subjects;
