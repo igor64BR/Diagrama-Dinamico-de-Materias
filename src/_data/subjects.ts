@@ -1,114 +1,737 @@
 import Subject from "@/_infra/entities/Subject";
-import { SubjectState } from "@/_infra/enums/SubjectState";
-import { SubjectType } from "@/_infra/enums/SubjectType";
+import {SubjectState} from "@/_infra/enums/SubjectState";
+import {SubjectType} from "@/_infra/enums/SubjectType";
 
 const subjects: Subject[] = [
-  new Subject("COM06847", 1, "INTRODUÇÃO À INFORMÁTICA", [], SubjectType.MANDATORY, SubjectState.ONGOING),
-  new Subject("COM06852", 1, "INTRODUÇÃO AOS SISTEMAS DE INFORMAÇÃO", [], SubjectType.MANDATORY, SubjectState.ONGOING),
-  new Subject("COM06853", 1, "LÓGICA COMPUTACIONAL", [], SubjectType.MANDATORY, SubjectState.ONGOING),
-  new Subject("ENG06854", 1, "PORTUGUÊS INSTRUMENTAL", [], SubjectType.MANDATORY, SubjectState.ONGOING),
-  new Subject("COM06842", 1, "PROGRAMAÇÃO I", [], SubjectType.MANDATORY, SubjectState.DONE),
-  new Subject("MPA06840", 1, "VETORES E GEOMETRIA ANALÍTICA", [], SubjectType.MANDATORY, SubjectState.DONE),
-  new Subject("MPA06839", 2, "CÁLCULO A", [], SubjectType.MANDATORY, SubjectState.DONE),
-  new Subject("ENG06849", 2, "INGLÊS INSTRUMENTAL", [], SubjectType.MANDATORY, SubjectState.ONGOING),
-  new Subject("COM06851", 2, "MATEMÁTICA DISCRETA", [], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM06985", 2, "TEORIA GERAL DOS SISTEMAS", ["COM06852"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM06984", 2, "FUNDAMENTOS DE PROGRAMAÇÃO WEB", ["COM06847"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("MPA06855", 3, "ÁLGEBRA LINEAR", ["MPA06840"], SubjectType.MANDATORY, SubjectState.DONE),
-  new Subject("COM10014", 3, "COMPUTABILIDADE E COMPLEXIDADE", ["COM06851"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10015", 3, "ENGENHARIA DE SOFTWARE", ["COM06842"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM06992", 3, "ESTRUTURAS DE DADOS I", ["COM06842"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10016", 3, "SISTEMAS DE APOIO À DECISÃO", ["COM06985"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10076", 4, "ARQUITETURA DE COMPUTADORES", ["COM06842"], SubjectType.MANDATORY, SubjectState.ONGOING),
-  new Subject("ENG05510", 4, "ESTATÍSTICA BÁSICA", ["MPA06839"], SubjectType.MANDATORY, SubjectState.DONE),
-  new Subject("COM10078", 4, "ESTRUTURA DE DADOS II", ["COM06992"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10082", 4, "PROGRAMAÇÃO II", ["COM06992"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10275", 4, "ENGENHARIA DE REQUISITOS DE SOFTWARE", ["COM10015"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10129", 5, "BANCO DE DADOS", ["COM10078"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10507", 5, "INTERFACE HUMANO-COMPUTADOR", ["COM10275"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10131", 5, "OTIMIZAÇÃO LINEAR", ["MPA06855", "COM06992"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10508", 5, "PROJETO DE SISTEMAS DE SOFTWARE", ["COM10275", "COM10082"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10132", 5, "SISTEMAS OPERACIONAIS", ["COM06992", "COM10076"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10603", 6, "DIREITO E LEGISLAÇÃO", [], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10733", 6, "GERÊNCIA DE PROJETO DE SOFTWARE", ["COM10015"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10081", 6, "METODOLOGIA DE PESQUISA EM INFORMÁTICA", ["ENG06854"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10393", 6, "MÉTODOS DE OTIMIZAÇÃO", ["COM10131"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10394", 6, "REDES DE COMPUTADORES", ["COM10132"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM11014", 6, "GERENCIAMENTO DE BANCO DE DADOS", ["COM10129"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("CFM10426", 7, "ADMINISTRAÇÃO E ECONOMIA", [], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM06996", 7, "INFORMÁTICA E SOCIEDADE", ["COM06852"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM11007", 7, "SEGURANÇA E AUDITORIA DE SISTEMAS", ["COM06985", "COM10733"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10616", 7, "SISTEMAS DISTRIBUÍDOS", ["COM10394"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10606", 7, "COMÉRCIO ELETRÔNICO", ["COM06984"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10396", 8, "DESENVOLVIMENTO DE SISTEMAS PARA WEB", ["COM10082", "COM10129"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM10609", 8, "GERENCIAMENTO E ADMINISTRAÇÃO DE REDES", ["COM10394"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("CFM11061", 8, "EMPREENDEDORISMO", ["CFM10426"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM11064", 8, "GESTÃO DE QUALIDADE DE SOFTWARE", ["COM10508"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("COM11259", 9, "SISTEMAS DE SOFTWARE LIVRE", ["COM10132"], SubjectType.MANDATORY, SubjectState.UNAVAILABLE),
-  new Subject("VET10127", null, "Fundamentos da Língua Brasileira de Sinais - LIBRAS", [], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11013", null, "Mineração de Dados", ["ENG05510", "COM10129"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10605", null, "Banco de Dados Distribuídos", ["COM10129"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("MPA06979", null, "Cálculo B", ["MPA06839"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10607", null, "Computação Forense", ["MPA06855", "COM10394"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10604", null, "Computação Gráfica", ["MPA06855", "COM06992"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10608", null, "Computação Móvel", ["COM10394"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10397", null, "Fluxo em Redes", ["COM10131"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10398", null, "Interfaces e Periféricos", ["COM10076", "COM10132"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10392", null, "Linguagens de Programação", ["COM10082"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10080", null, "Lógica Computacional II", ["COM06853", "ENG05510"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10399", null, "Processamento Digital de Imagens", ["MPA06855", "COM06992"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10400", null, "Programação III", ["COM06842"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10133", null, "Teoria dos Grafos", ["COM10078"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10610", null, "Tópicos em Banco de Dados I", ["COM10129"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10611", null, "Tópicos Especiais em Engenharia de Software I", ["COM10015"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10614", null, "Tópicos Especiais em Otimização Combinatória I", ["COM10131"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("ENG10792", null, "Inteligência Artificial", ["COM06853", "COM06842"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10615", null, "Tópicos Especiais em Programação I", ["COM10082"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10613", null, "Tópicos Especiais em Redes de Computadores I", ["COM10394"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM10612", null, "Tópicos Especiais em Informática I", [], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11262", null, "Otimização Não-Linear", ["COM10131"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11263", null, "Tópicos Especiais em Banco de Dados II", ["COM10129"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11264", null, "Tópicos Especiais em Computação Gráfica II", ["COM10604"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11265", null, "Tópicos Especiais em Engenharia de Software II", ["COM10015"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11266", null, "Tópicos Especiais em Informática II", [], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11267", null, "Tópicos Especiais em Inteligência Artificial II", ["ENG10792"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11268", null, "Tópicos Especiais em Interface Humano-Computador II", ["COM10507"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11269", null, "Tópicos Especiais em Otimização Combinatória II", ["COM10131"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11270", null, "Tópicos Especiais em Programação II", ["COM10082"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11271", null, "Tópicos Especiais em Redes de Computadores II", ["COM10394"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11272", null, "Tópicos Especiais em Sistemas Operacionais II", ["COM10132"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11273", null, "Tópicos Especiais em Sistemas Web II", ["COM10396"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11065", null, "Modelagem e Simulação", ["COM06992", "ENG05510"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11066", null, "Montagem e Manutenção de Computadores", ["COM10076"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11067", null, "Multimídia e Hipermídia", ["COM10078", "COM10507"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11068", null, "Neurocomputação", ["ENG10792"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11069", null, "Otimização Linear Inteira", ["COM10131"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11071", null, "Processamento de Alto Desempenho", ["COM10616"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11072", null, "Processos Estocásticos", ["COM06992"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11073", null, "Programação IV", ["COM06853"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11074", null, "Segurança em Redes", ["COM10394"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11078", null, "Tópicos Especiais em Computação Gráfica I", ["COM10604"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11082", null, "Tópicos Especiais em Inteligência Artificial I", ["ENG10792"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11084", null, "Tópicos Especiais em Interface Humano-Computador I", ["COM10507"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11089", null, "Tópicos Especiais em Sistemas Operacionais I", ["COM10132"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE),
-  new Subject("COM11091", null, "Tópicos Especiais em Sistemas Web I", ["COM10396"], SubjectType.OPTIONAL, SubjectState.UNAVAILABLE)
+    {
+        code: "COM06847",
+        period: 1,
+        name: "INTRODUÇÃO À INFORMÁTICA",
+        requirements: [],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.ONGOING
+    },
+    {
+        code: "COM06852",
+        period: 1,
+        name: "INTRODUÇÃO AOS SISTEMAS DE INFORMAÇÃO",
+        requirements: [],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.ONGOING
+    },
+    {
+        code: "COM06853",
+        period: 1,
+        name: "LÓGICA COMPUTACIONAL",
+        requirements: [],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.ONGOING
+    },
+    {
+        code: "ENG06854",
+        period: 1,
+        name: "PORTUGUÊS INSTRUMENTAL",
+        requirements: [],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.ONGOING
+    },
+    {
+        code: "COM06842",
+        period: 1,
+        name: "PROGRAMAÇÃO I",
+        requirements: [],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.DONE
+    },
+    {
+        code: "MPA06840",
+        period: 1,
+        name: "VETORES E GEOMETRIA ANALÍTICA",
+        requirements: [],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.DONE
+    },
+    {
+        code: "MPA06839",
+        period: 2,
+        name: "CÁLCULO A",
+        requirements: [],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.DONE
+    },
+    {
+        code: "ENG06849",
+        period: 2,
+        name: "INGLÊS INSTRUMENTAL",
+        requirements: [],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.ONGOING
+    },
+    {
+        code: "COM06851",
+        period: 2,
+        name: "MATEMÁTICA DISCRETA",
+        requirements: [],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM06985",
+        period: 2,
+        name: "TEORIA GERAL DOS SISTEMAS",
+        requirements: ["COM06852"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM06984",
+        period: 2,
+        name: "FUNDAMENTOS DE PROGRAMAÇÃO WEB",
+        requirements: ["COM06847"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "MPA06855",
+        period: 3,
+        name: "ÁLGEBRA LINEAR",
+        requirements: ["MPA06840"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.DONE
+    },
+    {
+        code: "COM10014",
+        period: 3,
+        name: "COMPUTABILIDADE E COMPLEXIDADE",
+        requirements: ["COM06851"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10015",
+        period: 3,
+        name: "ENGENHARIA DE SOFTWARE",
+        requirements: ["COM06842"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM06992",
+        period: 3,
+        name: "ESTRUTURAS DE DADOS I",
+        requirements: ["COM06842"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10016",
+        period: 3,
+        name: "SISTEMAS DE APOIO À DECISÃO",
+        requirements: ["COM06985"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10076",
+        period: 4,
+        name: "ARQUITETURA DE COMPUTADORES",
+        requirements: ["COM06842"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.ONGOING
+    },
+    {
+        code: "ENG05510",
+        period: 4,
+        name: "ESTATÍSTICA BÁSICA",
+        requirements: ["MPA06839"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.DONE
+    },
+    {
+        code: "COM10078",
+        period: 4,
+        name: "ESTRUTURA DE DADOS II",
+        requirements: ["COM06992"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10082",
+        period: 4,
+        name: "PROGRAMAÇÃO II",
+        requirements: ["COM06992"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10275",
+        period: 4,
+        name: "ENGENHARIA DE REQUISITOS DE SOFTWARE",
+        requirements: ["COM10015"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10129",
+        period: 5,
+        name: "BANCO DE DADOS",
+        requirements: ["COM10078"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10507",
+        period: 5,
+        name: "INTERFACE HUMANO-COMPUTADOR",
+        requirements: ["COM10275"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10131",
+        period: 5,
+        name: "OTIMIZAÇÃO LINEAR",
+        requirements: ["MPA06855", "COM06992"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10508",
+        period: 5,
+        name: "PROJETO DE SISTEMAS DE SOFTWARE",
+        requirements: ["COM10275", "COM10082"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10132",
+        period: 5,
+        name: "SISTEMAS OPERACIONAIS",
+        requirements: ["COM06992", "COM10076"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10603",
+        period: 6,
+        name: "DIREITO E LEGISLAÇÃO",
+        requirements: [],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10733",
+        period: 6,
+        name: "GERÊNCIA DE PROJETO DE SOFTWARE",
+        requirements: ["COM10015"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10081",
+        period: 6,
+        name: "METODOLOGIA DE PESQUISA EM INFORMÁTICA",
+        requirements: ["ENG06854"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10393",
+        period: 6,
+        name: "MÉTODOS DE OTIMIZAÇÃO",
+        requirements: ["COM10131"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10394",
+        period: 6,
+        name: "REDES DE COMPUTADORES",
+        requirements: ["COM10132"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11014",
+        period: 6,
+        name: "GERENCIAMENTO DE BANCO DE DADOS",
+        requirements: ["COM10129"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "CFM10426",
+        period: 7,
+        name: "ADMINISTRAÇÃO E ECONOMIA",
+        requirements: [],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM06996",
+        period: 7,
+        name: "INFORMÁTICA E SOCIEDADE",
+        requirements: ["COM06852"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11007",
+        period: 7,
+        name: "SEGURANÇA E AUDITORIA DE SISTEMAS",
+        requirements: ["COM06985", "COM10733"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10616",
+        period: 7,
+        name: "SISTEMAS DISTRIBUÍDOS",
+        requirements: ["COM10394"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10606",
+        period: 7,
+        name: "COMÉRCIO ELETRÔNICO",
+        requirements: ["COM06984"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10396",
+        period: 8,
+        name: "DESENVOLVIMENTO DE SISTEMAS PARA WEB",
+        requirements: ["COM10082", "COM10129"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10609",
+        period: 8,
+        name: "GERENCIAMENTO E ADMINISTRAÇÃO DE REDES",
+        requirements: ["COM10394"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "CFM11061",
+        period: 8,
+        name: "EMPREENDEDORISMO",
+        requirements: ["CFM10426"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11064",
+        period: 8,
+        name: "GESTÃO DE QUALIDADE DE SOFTWARE",
+        requirements: ["COM10508"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11259",
+        period: 9,
+        name: "SISTEMAS DE SOFTWARE LIVRE",
+        requirements: ["COM10132"],
+        type: SubjectType.MANDATORY,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "VET10127",
+        period: null,
+        name: "Fundamentos da Língua Brasileira de Sinais - LIBRAS",
+        requirements: [],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11013",
+        period: null,
+        name: "Mineração de Dados",
+        requirements: ["ENG05510", "COM10129"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10605",
+        period: null,
+        name: "Banco de Dados Distribuídos",
+        requirements: ["COM10129"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "MPA06979",
+        period: null,
+        name: "Cálculo B",
+        requirements: ["MPA06839"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10607",
+        period: null,
+        name: "Computação Forense",
+        requirements: ["MPA06855", "COM10394"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10604",
+        period: null,
+        name: "Computação Gráfica",
+        requirements: ["MPA06855", "COM06992"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10608",
+        period: null,
+        name: "Computação Móvel",
+        requirements: ["COM10394"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10397",
+        period: null,
+        name: "Fluxo em Redes",
+        requirements: ["COM10131"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10398",
+        period: null,
+        name: "Interfaces e Periféricos",
+        requirements: ["COM10076", "COM10132"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10392",
+        period: null,
+        name: "Linguagens de Programação",
+        requirements: ["COM10082"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10080",
+        period: null,
+        name: "Lógica Computacional II",
+        requirements: ["COM06853", "ENG05510"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10399",
+        period: null,
+        name: "Processamento Digital de Imagens",
+        requirements: ["MPA06855", "COM06992"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10400",
+        period: null,
+        name: "Programação III",
+        requirements: ["COM06842"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10133",
+        period: null,
+        name: "Teoria dos Grafos",
+        requirements: ["COM10078"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10610",
+        period: null,
+        name: "Tópicos em Banco de Dados I",
+        requirements: ["COM10129"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10611",
+        period: null,
+        name: "Tópicos Especiais em Engenharia de Software I",
+        requirements: ["COM10015"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10614",
+        period: null,
+        name: "Tópicos Especiais em Otimização Combinatória I",
+        requirements: ["COM10131"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "ENG10792",
+        period: null,
+        name: "Inteligência Artificial",
+        requirements: ["COM06853", "COM06842"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10615",
+        period: null,
+        name: "Tópicos Especiais em Programação I",
+        requirements: ["COM10082"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10613",
+        period: null,
+        name: "Tópicos Especiais em Redes de Computadores I",
+        requirements: ["COM10394"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM10612",
+        period: null,
+        name: "Tópicos Especiais em Informática I",
+        requirements: [],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11262",
+        period: null,
+        name: "Otimização Não-Linear",
+        requirements: ["COM10131"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11263",
+        period: null,
+        name: "Tópicos Especiais em Banco de Dados II",
+        requirements: ["COM10129"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11264",
+        period: null,
+        name: "Tópicos Especiais em Computação Gráfica II",
+        requirements: ["COM10604"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11265",
+        period: null,
+        name: "Tópicos Especiais em Engenharia de Software II",
+        requirements: ["COM10015"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11266",
+        period: null,
+        name: "Tópicos Especiais em Informática II",
+        requirements: [],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11267",
+        period: null,
+        name: "Tópicos Especiais em Inteligência Artificial II",
+        requirements: ["ENG10792"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11268",
+        period: null,
+        name: "Tópicos Especiais em Interface Humano-Computador II",
+        requirements: ["COM10507"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11269",
+        period: null,
+        name: "Tópicos Especiais em Otimização Combinatória II",
+        requirements: ["COM10131"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11270",
+        period: null,
+        name: "Tópicos Especiais em Programação II",
+        requirements: ["COM10082"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11271",
+        period: null,
+        name: "Tópicos Especiais em Redes de Computadores II",
+        requirements: ["COM10394"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11272",
+        period: null,
+        name: "Tópicos Especiais em Sistemas Operacionais II",
+        requirements: ["COM10132"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11273",
+        period: null,
+        name: "Tópicos Especiais em Sistemas Web II",
+        requirements: ["COM10396"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11065",
+        period: null,
+        name: "Modelagem e Simulação",
+        requirements: ["COM06992", "ENG05510"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11066",
+        period: null,
+        name: "Montagem e Manutenção de Computadores",
+        requirements: ["COM10076"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11067",
+        period: null,
+        name: "Multimídia e Hipermídia",
+        requirements: ["COM10078", "COM10507"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11068",
+        period: null,
+        name: "Neurocomputação",
+        requirements: ["ENG10792"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11069",
+        period: null,
+        name: "Otimização Linear Inteira",
+        requirements: ["COM10131"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11071",
+        period: null,
+        name: "Processamento de Alto Desempenho",
+        requirements: ["COM10616"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11072",
+        period: null,
+        name: "Processos Estocásticos",
+        requirements: ["COM06992"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11073",
+        period: null,
+        name: "Programação IV",
+        requirements: ["COM06853"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11074",
+        period: null,
+        name: "Segurança em Redes",
+        requirements: ["COM10394"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11078",
+        period: null,
+        name: "Tópicos Especiais em Computação Gráfica I",
+        requirements: ["COM10604"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11082",
+        period: null,
+        name: "Tópicos Especiais em Inteligência Artificial I",
+        requirements: ["ENG10792"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11084",
+        period: null,
+        name: "Tópicos Especiais em Interface Humano-Computador I",
+        requirements: ["COM10507"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11089",
+        period: null,
+        name: "Tópicos Especiais em Sistemas Operacionais I",
+        requirements: ["COM10132"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    },
+    {
+        code: "COM11091",
+        period: null,
+        name: "Tópicos Especiais em Sistemas Web I",
+        requirements: ["COM10396"],
+        type: SubjectType.OPTIONAL,
+        state: SubjectState.UNAVAILABLE
+    }
 ];
 
 export const updateSubjectsState = () => {
-  for (const subject of subjects) {
-    if ([SubjectState.DONE, SubjectState.ONGOING].includes(subject.state)) {
-      continue;
+    for (const subject of subjects) {
+        if ([SubjectState.DONE, SubjectState.ONGOING].includes(subject.state)) {
+            continue;
+        }
+
+        const requirements = subjects.filter(x => subject.requirements.includes(x.code));
+
+        if (requirements.some(x => x.state !== SubjectState.DONE)) {
+            subject.state = SubjectState.UNAVAILABLE;
+            continue;
+        }
+
+        subject.state = SubjectState.AVAILABLE;
     }
-
-    const requirements = subjects.filter(x => subject.requirements.includes(x.code));
-
-    if (requirements.some(x => x.state !== SubjectState.DONE)) {
-      subject.state = SubjectState.UNAVAILABLE;
-      continue;
-    }
-
-    subject.state = SubjectState.AVAILABLE;
-  }
 }
 
 updateSubjectsState();
