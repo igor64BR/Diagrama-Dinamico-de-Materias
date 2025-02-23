@@ -17,10 +17,15 @@
     "@mui/styled-engine-sc": "^6.4.3",
     "@tailwindcss/postcss": "^4.0.7",
     "@xyflow/react": "^12.4.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.475.0",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "styled-components": "^6.1.15"
+    "styled-components": "^6.1.15",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
@@ -31,9 +36,9 @@
     "eslint-plugin-react": "^7.37.4",
     "globals": "^15.15.0",
     "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17",
+    "tailwindcss": "^4.0.8",
     "typescript": "^5",
     "typescript-eslint": "^8.24.1"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "yarn@4.6.0"
 }
