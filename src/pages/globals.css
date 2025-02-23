@@ -42,14 +42,12 @@
   --radius-sm: calc(var(--radius) - 4px);
 }
 
-/*@import "tailwindcss";*/
+@import "tailwindcss";
 
 body {
     margin: 0;
     padding: 0;
 }
-
-
 
 @layer base {
   :root {
@@ -106,8 +104,6 @@ body {
         --chart-5: 340 75% 55%;
     }
 }
-
-
 
 @layer base {
   * {
