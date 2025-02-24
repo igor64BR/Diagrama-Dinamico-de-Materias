@@ -8,7 +8,7 @@ import {
     NodeHeaderActions,
     NodeHeaderIcon,
     NodeHeaderMenuAction,
-    NodeHeaderTitle
+    NodeHeaderTitle,
 } from "@/components/node-header";
 import {
     DropdownMenuLabel,
@@ -16,7 +16,7 @@ import {
     DropdownMenuRadioItem,
     DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu";
-import { Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 
 
 export default function SubjectBox(
@@ -47,7 +47,7 @@ export default function SubjectBox(
 
     return (
         <BaseNode style={{backgroundColor: color.bgColor, color: color.fontColor}}>
-            <NodeHeader>
+            <NodeHeader className={'px-3 border-b'}>
                 <NodeHeaderIcon>
                     <Typography fontSize={'smaller'} fontWeight={'bold'}>{period}</Typography>
                 </NodeHeaderIcon>
@@ -69,6 +69,9 @@ export default function SubjectBox(
                     </NodeHeaderMenuAction>
                 </NodeHeaderActions>
             </NodeHeader>
+            <Box width={150} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+              <Typography textAlign={'center'}>{name}</Typography>
+            </Box>
         </BaseNode>
     );
 }
