@@ -2,12 +2,9 @@ import {
   addEdge,
   Connection,
   Controls,
-  Edge,
   Node,
   ReactFlow,
   ReactFlowProvider,
-  useEdgesState,
-  useNodesState
 } from "@xyflow/react";
 import React, { useCallback, useEffect } from "react";
 import FlowBg from "@/pages/reactFlowComponents/FlowBg";
@@ -17,15 +14,22 @@ import { createEdge } from "@/_infra/entities/flowEntitiesHandlers/edgeHandler";
 import subjects from "@/_data/subjects";
 import Subject from "@/_infra/entities/Subject";
 import SubjectBox from "../components/SubjectBox";
-import { SubjectState } from "@/_infra/enums/SubjectState";
+import { useSubjectContext } from "@/contexts/SubjectContext";
 
 export default function FlowBody() {
   // Data
-
-  // Flow
-  const [nodes, setNodes, onNodesChange] = useNodesState<Node<Subject>>([]);
-
-  const [edges, setEdges, onEdgesChange] = useEdgesState<Edge<{ state: SubjectState }>>([]);
+  const {
+    nodesHandlers: {
+      nodes,
+      setNodes,
+      onNodesChange
+    },
+    edgesHandlers: {
+      edges,
+      setEdges,
+      onEdgesChange
+    }
+  } = useSubjectContext();
 
   // React
   useEffect(() => {
@@ -39,7 +43,7 @@ export default function FlowBody() {
   // Methods
   const loadSubjectsGroupedByPeriod = () => {
     const grouped = subjects
-      .filter(x => [x.code, ...x.requirements].includes('COM06853'))
+      // .filter(x => [x.code, ...x.requirements].includes('COM06853'))
       .reduce((acc, x) => {
         if (!acc[x.period ?? -1]) {
           acc[x.period ?? -1] = [];
@@ -54,21 +58,32 @@ export default function FlowBody() {
   const loadSubjectNodes = (grouped: { [key: number]: Subject[]; }) => {
     const nodes: Node<Subject>[] = [];
 
+    const xInit = 0;
+    const yInit = 0;
+
+    const xStep = 200;
+    const yStep = 180;
+
+    const yLimit = 800;
+
+    let x = xInit;
+    let y = yInit;
+
     for (const period of Object.keys(grouped)) {
-      let x = Number(period) * 250;
-      let y = 0;
-
       for (const subject of grouped[Number(period)]) {
-        y += 100;
-
-        if (y > 500) {
-          x += 250;
-          y = 100;
+        if (y > yLimit) {
+          y = yInit;
+          x += xStep;
         }
 
         const node = createNode(subject, {x, y, componentName: SubjectBox.name});
         nodes.push(node);
+
+        y += yStep;
       }
+
+      y = yInit;
+      x += xStep * 1.5;
     }
 
     setNodes(nodes);
@@ -92,8 +107,6 @@ export default function FlowBody() {
         const src = nodes.find(x => x.data.code === r);
 
         if (!src) {
-          // console.error(`Source not found: ${r}\n Target: ${nodes.map(x => x.data.code)}`);
-          // throw new Error('Node not found');
           return;
         }
 

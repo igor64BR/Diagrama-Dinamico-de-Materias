@@ -75,9 +75,12 @@ export default function SubjectBox(
       {requirements.length && <Handle
           type={'target'}
           position={Position.Left}
-
+          onConnect={(params) => console.error('handle onConnect', params)}
       />}
-      <Handle type={'source'} position={Position.Right}/>
+      <Handle
+        type={'source'}
+        position={Position.Right}
+      />
     </BaseNode>
   );
 }
