@@ -17,15 +17,19 @@ import {
   DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu";
 import { Box, Typography } from "@mui/material";
-import { useSubjectContext } from "@/contexts/SubjectContext";
+import useSubjectNodesHandler from "@/utils/useSubjectNodesHandler";
 
+type SubjectBoxProps = NodeProps<Node<Subject>> & {
+  onStateChange: () => void;
+};
 
 export default function SubjectBox(
   {
-    data
-  }: NodeProps<Node<Subject>>) {
-  // Context
-  const { onSubjectStateChange } = useSubjectContext();
+    data,
+    onStateChange,
+  }: SubjectBoxProps
+) {
+  const subjectNodeHandler = useSubjectNodesHandler();
 
   // Data
   const [color, setColor] = useState<StateStyles>({bgColor: '', fontColor: ''});
@@ -39,7 +43,8 @@ export default function SubjectBox(
     loadColor();
     if (!isFirstRender.current) {
       data.state = selectedState;
-      onSubjectStateChange(data);
+      subjectNodeHandler.onSubjectStateChange(data);
+      onStateChange();
     } else {
       isFirstRender.current = false;
     }

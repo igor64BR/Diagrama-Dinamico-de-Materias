@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react";
 import "./globals.css";
 import "@xyflow/react/dist/style.css";
 import FlowBody from "@/pages/reactFlowComponents/FlowBody";
-import { SubjectProvider } from "@/contexts/SubjectContext";
 
 export default function Home() {
   const [isClient, setIsClient] = useState(false);
@@ -20,9 +19,7 @@ export default function Home() {
 
   return (
     <Box width={'100vw'} height={'100vh'}>
-      <SubjectProvider>
-        <FlowBody />
-      </SubjectProvider>
+      <FlowBody/>
     </Box>
   );
 }

@@ -161,7 +161,7 @@ const subjects: Subject[] = [
         name: "PROGRAMAÇÃO II",
         requirements: ["COM06992"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.DONE
     },
     {
         code: "COM10275",
