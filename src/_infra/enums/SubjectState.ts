@@ -30,8 +30,8 @@ export enum DisplayState {
 export const stateColors: { [key in DisplayState]: StateStyles } = {
     [DisplayState.AVAILABLE]: {bgColor: 'white', fontColor: 'black'},
     [DisplayState.UNAVAILABLE]: {bgColor: 'red', fontColor: 'white'},
-    [DisplayState.DONE]: {bgColor: 'green', fontColor: 'white'},
-    [DisplayState.ONGOING]: {bgColor: 'blue', fontColor: 'white'},
+    [DisplayState.ONGOING]: {bgColor: 'green', fontColor: 'white'},
+    [DisplayState.DONE]: {bgColor: 'blue', fontColor: 'white'},
 }
 
 const stateNames: { [key in SubjectState]: string } = {
