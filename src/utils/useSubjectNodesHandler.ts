@@ -3,7 +3,6 @@ import Subject from "@/_infra/entities/Subject";
 import { Node } from "@xyflow/react";
 import { createNode } from "@/_infra/entities/flowEntitiesHandlers/nodeHandler";
 import SubjectBox from "@/pages/components/SubjectBox";
-import { SubjectState } from "@/_infra/enums/SubjectState";
 
 export default function useSubjectNodesHandler() {
   const subjects = [...staticSubjects];
@@ -67,26 +66,16 @@ export default function useSubjectNodesHandler() {
 
       return getSubjectNodes(grouped);
     },
-    onSubjectStateChange: function (subject: Subject) {
+    updateSubjectState: function (subject: Subject) {
       const index = subjects.findIndex(x => x.code === subject.code);
-      subjects[index] = subject;
 
-      const bockedSubjects = subjects
-        .filter(x => x.requirements.includes(subject.code) &&
-          [SubjectState.UNAVAILABLE, SubjectState.AVAILABLE].includes(x.state)
-        );
-
-      for (const blockedSubject of bockedSubjects) {
-        const requirements = subjects.filter(x => blockedSubject.requirements.includes(x.code));
-
-        if (requirements.every(x => x.state === SubjectState.DONE)) {
-          blockedSubject.state = SubjectState.AVAILABLE
-        } else {
-          blockedSubject.state = SubjectState.UNAVAILABLE
-        }
-
-        this.onSubjectStateChange(blockedSubject);
+      subjects[index] = {
+        ...subjects[index],
+        state: subject.state
       }
-    }
+    },
+    getRequirements: function (subject: Subject) {
+      return this.getAll().filter(x => subject.requirements.includes(x.data.code));
+    },
   }
 }

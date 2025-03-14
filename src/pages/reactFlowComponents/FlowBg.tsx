@@ -14,6 +14,5 @@ export default function FlowBg() {
       />
       <Background id={'1'} variant={BackgroundVariant.Dots} gap={10} size={1} style={{backgroundColor: '#0000'}}/>
     </>
-
   );
 }

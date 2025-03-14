@@ -73,7 +73,7 @@ const subjects: Subject[] = [
         name: "MATEMÁTICA DISCRETA",
         requirements: [],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM06985",
@@ -81,7 +81,7 @@ const subjects: Subject[] = [
         name: "TEORIA GERAL DOS SISTEMAS",
         requirements: ["COM06852"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM06984",
@@ -89,7 +89,7 @@ const subjects: Subject[] = [
         name: "FUNDAMENTOS DE PROGRAMAÇÃO WEB",
         requirements: ["COM06847"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "MPA06855",
@@ -105,7 +105,7 @@ const subjects: Subject[] = [
         name: "COMPUTABILIDADE E COMPLEXIDADE",
         requirements: ["COM06851"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10015",
@@ -113,7 +113,7 @@ const subjects: Subject[] = [
         name: "ENGENHARIA DE SOFTWARE",
         requirements: ["COM06842"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM06992",
@@ -121,7 +121,7 @@ const subjects: Subject[] = [
         name: "ESTRUTURAS DE DADOS I",
         requirements: ["COM06842"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10016",
@@ -129,7 +129,7 @@ const subjects: Subject[] = [
         name: "SISTEMAS DE APOIO À DECISÃO",
         requirements: ["COM06985"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10076",
@@ -153,7 +153,7 @@ const subjects: Subject[] = [
         name: "ESTRUTURA DE DADOS II",
         requirements: ["COM06992"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10082",
@@ -169,7 +169,7 @@ const subjects: Subject[] = [
         name: "ENGENHARIA DE REQUISITOS DE SOFTWARE",
         requirements: ["COM10015"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10129",
@@ -177,7 +177,7 @@ const subjects: Subject[] = [
         name: "BANCO DE DADOS",
         requirements: ["COM10078"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10507",
@@ -185,7 +185,7 @@ const subjects: Subject[] = [
         name: "INTERFACE HUMANO-COMPUTADOR",
         requirements: ["COM10275"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10131",
@@ -193,7 +193,7 @@ const subjects: Subject[] = [
         name: "OTIMIZAÇÃO LINEAR",
         requirements: ["MPA06855", "COM06992"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10508",
@@ -201,7 +201,7 @@ const subjects: Subject[] = [
         name: "PROJETO DE SISTEMAS DE SOFTWARE",
         requirements: ["COM10275", "COM10082"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10132",
@@ -209,7 +209,7 @@ const subjects: Subject[] = [
         name: "SISTEMAS OPERACIONAIS",
         requirements: ["COM06992", "COM10076"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10603",
@@ -217,7 +217,7 @@ const subjects: Subject[] = [
         name: "DIREITO E LEGISLAÇÃO",
         requirements: [],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10733",
@@ -225,7 +225,7 @@ const subjects: Subject[] = [
         name: "GERÊNCIA DE PROJETO DE SOFTWARE",
         requirements: ["COM10015"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10081",
@@ -233,7 +233,7 @@ const subjects: Subject[] = [
         name: "METODOLOGIA DE PESQUISA EM INFORMÁTICA",
         requirements: ["ENG06854"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10393",
@@ -241,7 +241,7 @@ const subjects: Subject[] = [
         name: "MÉTODOS DE OTIMIZAÇÃO",
         requirements: ["COM10131"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10394",
@@ -249,7 +249,7 @@ const subjects: Subject[] = [
         name: "REDES DE COMPUTADORES",
         requirements: ["COM10132"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11014",
@@ -257,7 +257,7 @@ const subjects: Subject[] = [
         name: "GERENCIAMENTO DE BANCO DE DADOS",
         requirements: ["COM10129"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "CFM10426",
@@ -265,7 +265,7 @@ const subjects: Subject[] = [
         name: "ADMINISTRAÇÃO E ECONOMIA",
         requirements: [],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM06996",
@@ -273,7 +273,7 @@ const subjects: Subject[] = [
         name: "INFORMÁTICA E SOCIEDADE",
         requirements: ["COM06852"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11007",
@@ -281,7 +281,7 @@ const subjects: Subject[] = [
         name: "SEGURANÇA E AUDITORIA DE SISTEMAS",
         requirements: ["COM06985", "COM10733"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10616",
@@ -289,7 +289,7 @@ const subjects: Subject[] = [
         name: "SISTEMAS DISTRIBUÍDOS",
         requirements: ["COM10394"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10606",
@@ -297,7 +297,7 @@ const subjects: Subject[] = [
         name: "COMÉRCIO ELETRÔNICO",
         requirements: ["COM06984"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10396",
@@ -305,7 +305,7 @@ const subjects: Subject[] = [
         name: "DESENVOLVIMENTO DE SISTEMAS PARA WEB",
         requirements: ["COM10082", "COM10129"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10609",
@@ -313,7 +313,7 @@ const subjects: Subject[] = [
         name: "GERENCIAMENTO E ADMINISTRAÇÃO DE REDES",
         requirements: ["COM10394"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "CFM11061",
@@ -321,7 +321,7 @@ const subjects: Subject[] = [
         name: "EMPREENDEDORISMO",
         requirements: ["CFM10426"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11064",
@@ -329,7 +329,7 @@ const subjects: Subject[] = [
         name: "GESTÃO DE QUALIDADE DE SOFTWARE",
         requirements: ["COM10508"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11259",
@@ -337,7 +337,7 @@ const subjects: Subject[] = [
         name: "SISTEMAS DE SOFTWARE LIVRE",
         requirements: ["COM10132"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "VET10127",
@@ -345,7 +345,7 @@ const subjects: Subject[] = [
         name: "Fundamentos da Língua Brasileira de Sinais - LIBRAS",
         requirements: [],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11013",
@@ -353,7 +353,7 @@ const subjects: Subject[] = [
         name: "Mineração de Dados",
         requirements: ["ENG05510", "COM10129"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10605",
@@ -361,7 +361,7 @@ const subjects: Subject[] = [
         name: "Banco de Dados Distribuídos",
         requirements: ["COM10129"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "MPA06979",
@@ -369,7 +369,7 @@ const subjects: Subject[] = [
         name: "Cálculo B",
         requirements: ["MPA06839"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10607",
@@ -377,7 +377,7 @@ const subjects: Subject[] = [
         name: "Computação Forense",
         requirements: ["MPA06855", "COM10394"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10604",
@@ -385,7 +385,7 @@ const subjects: Subject[] = [
         name: "Computação Gráfica",
         requirements: ["MPA06855", "COM06992"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10608",
@@ -393,7 +393,7 @@ const subjects: Subject[] = [
         name: "Computação Móvel",
         requirements: ["COM10394"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10397",
@@ -401,7 +401,7 @@ const subjects: Subject[] = [
         name: "Fluxo em Redes",
         requirements: ["COM10131"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10398",
@@ -409,7 +409,7 @@ const subjects: Subject[] = [
         name: "Interfaces e Periféricos",
         requirements: ["COM10076", "COM10132"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10392",
@@ -417,7 +417,7 @@ const subjects: Subject[] = [
         name: "Linguagens de Programação",
         requirements: ["COM10082"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10080",
@@ -425,7 +425,7 @@ const subjects: Subject[] = [
         name: "Lógica Computacional II",
         requirements: ["COM06853", "ENG05510"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10399",
@@ -433,7 +433,7 @@ const subjects: Subject[] = [
         name: "Processamento Digital de Imagens",
         requirements: ["MPA06855", "COM06992"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10400",
@@ -441,7 +441,7 @@ const subjects: Subject[] = [
         name: "Programação III",
         requirements: ["COM06842"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10133",
@@ -449,7 +449,7 @@ const subjects: Subject[] = [
         name: "Teoria dos Grafos",
         requirements: ["COM10078"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10610",
@@ -457,7 +457,7 @@ const subjects: Subject[] = [
         name: "Tópicos em Banco de Dados I",
         requirements: ["COM10129"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10611",
@@ -465,7 +465,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Engenharia de Software I",
         requirements: ["COM10015"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10614",
@@ -473,7 +473,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Otimização Combinatória I",
         requirements: ["COM10131"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "ENG10792",
@@ -481,7 +481,7 @@ const subjects: Subject[] = [
         name: "Inteligência Artificial",
         requirements: ["COM06853", "COM06842"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10615",
@@ -489,7 +489,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Programação I",
         requirements: ["COM10082"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10613",
@@ -497,7 +497,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Redes de Computadores I",
         requirements: ["COM10394"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM10612",
@@ -505,7 +505,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Informática I",
         requirements: [],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11262",
@@ -513,7 +513,7 @@ const subjects: Subject[] = [
         name: "Otimização Não-Linear",
         requirements: ["COM10131"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11263",
@@ -521,7 +521,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Banco de Dados II",
         requirements: ["COM10129"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11264",
@@ -529,7 +529,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Computação Gráfica II",
         requirements: ["COM10604"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11265",
@@ -537,7 +537,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Engenharia de Software II",
         requirements: ["COM10015"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11266",
@@ -545,7 +545,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Informática II",
         requirements: [],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11267",
@@ -553,7 +553,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Inteligência Artificial II",
         requirements: ["ENG10792"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11268",
@@ -561,7 +561,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Interface Humano-Computador II",
         requirements: ["COM10507"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11269",
@@ -569,7 +569,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Otimização Combinatória II",
         requirements: ["COM10131"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11270",
@@ -577,7 +577,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Programação II",
         requirements: ["COM10082"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11271",
@@ -585,7 +585,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Redes de Computadores II",
         requirements: ["COM10394"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11272",
@@ -593,7 +593,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Sistemas Operacionais II",
         requirements: ["COM10132"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11273",
@@ -601,7 +601,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Sistemas Web II",
         requirements: ["COM10396"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11065",
@@ -609,7 +609,7 @@ const subjects: Subject[] = [
         name: "Modelagem e Simulação",
         requirements: ["COM06992", "ENG05510"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11066",
@@ -617,7 +617,7 @@ const subjects: Subject[] = [
         name: "Montagem e Manutenção de Computadores",
         requirements: ["COM10076"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11067",
@@ -625,7 +625,7 @@ const subjects: Subject[] = [
         name: "Multimídia e Hipermídia",
         requirements: ["COM10078", "COM10507"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11068",
@@ -633,7 +633,7 @@ const subjects: Subject[] = [
         name: "Neurocomputação",
         requirements: ["ENG10792"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11069",
@@ -641,7 +641,7 @@ const subjects: Subject[] = [
         name: "Otimização Linear Inteira",
         requirements: ["COM10131"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11071",
@@ -649,7 +649,7 @@ const subjects: Subject[] = [
         name: "Processamento de Alto Desempenho",
         requirements: ["COM10616"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11072",
@@ -657,7 +657,7 @@ const subjects: Subject[] = [
         name: "Processos Estocásticos",
         requirements: ["COM06992"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11073",
@@ -665,7 +665,7 @@ const subjects: Subject[] = [
         name: "Programação IV",
         requirements: ["COM06853"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11074",
@@ -673,7 +673,7 @@ const subjects: Subject[] = [
         name: "Segurança em Redes",
         requirements: ["COM10394"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11078",
@@ -681,7 +681,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Computação Gráfica I",
         requirements: ["COM10604"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11082",
@@ -689,7 +689,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Inteligência Artificial I",
         requirements: ["ENG10792"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11084",
@@ -697,7 +697,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Interface Humano-Computador I",
         requirements: ["COM10507"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11089",
@@ -705,7 +705,7 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Sistemas Operacionais I",
         requirements: ["COM10132"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     },
     {
         code: "COM11091",
@@ -713,27 +713,8 @@ const subjects: Subject[] = [
         name: "Tópicos Especiais em Sistemas Web I",
         requirements: ["COM10396"],
         type: SubjectType.OPTIONAL,
-        state: SubjectState.UNAVAILABLE
+        state: SubjectState.PENDING
     }
 ];
-
-export const updateSubjectsState = () => {
-    for (const subject of subjects) {
-        if ([SubjectState.DONE, SubjectState.ONGOING].includes(subject.state)) {
-            continue;
-        }
-
-        const requirements = subjects.filter(x => subject.requirements.includes(x.code));
-
-        if (requirements.some(x => x.state !== SubjectState.DONE)) {
-            subject.state = SubjectState.UNAVAILABLE;
-            continue;
-        }
-
-        subject.state = SubjectState.AVAILABLE;
-    }
-}
-
-updateSubjectsState();
 
 export default subjects;

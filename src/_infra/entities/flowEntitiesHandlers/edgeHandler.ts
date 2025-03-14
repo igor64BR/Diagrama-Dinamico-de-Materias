@@ -9,8 +9,7 @@ export const createEdge = <
   TData extends Record<string, unknown>>(
   src: Node<TNode>,
   tgt: Node<TNode>,
-  data?: TData,
   opts: Omit<Edge, 'id' | 'target' | 'source' | 'data'> | undefined = undefined
 ): Edge<TData> => {
-  return {...opts, data: data, id: generateId(src, tgt), source: src.id, target: tgt.id};
+  return {...opts, id: generateId(src, tgt), source: src.id, target: tgt.id};
 }

@@ -1,7 +1,7 @@
 import { Handle, Node, NodeProps, Position } from "@xyflow/react";
 import Subject from "@/_infra/entities/Subject";
 import React, { useEffect, useState } from "react";
-import { getStateName, SelectableStates, stateColors, StateStyles } from "@/_infra/enums/SubjectState";
+import { DisplayState, getStateName, stateColors, StateStyles, SubjectState } from "@/_infra/enums/SubjectState";
 import { BaseNode } from "@/components/base-node";
 import {
   NodeHeader,
@@ -21,12 +21,17 @@ import useSubjectNodesHandler from "@/utils/useSubjectNodesHandler";
 
 type SubjectBoxProps = NodeProps<Node<Subject>> & {
   onStateChange: () => void;
+  onMouseOver: (nodeId: string) => void;
+  onMouseOut: (nodeId: string) => void;
 };
 
 export default function SubjectBox(
   {
+    id,
     data,
     onStateChange,
+    onMouseOver,
+    onMouseOut,
   }: SubjectBoxProps
 ) {
   const subjectNodeHandler = useSubjectNodesHandler();
@@ -41,22 +46,39 @@ export default function SubjectBox(
   // UseEffect
   useEffect(() => {
     loadColor();
-    if (!isFirstRender.current) {
-      data.state = selectedState;
-      subjectNodeHandler.onSubjectStateChange(data);
-      onStateChange();
-    } else {
+
+    if (isFirstRender.current) {
       isFirstRender.current = false;
+      return;
     }
+
+    data.state = selectedState;
+    subjectNodeHandler.updateSubjectState(data);
+    onStateChange();
   }, [selectedState]);
 
   // Methods
   const loadColor = () => {
-    setColor(stateColors[selectedState]);
+    if (selectedState !== SubjectState.PENDING) {
+      setColor(stateColors[selectedState]);
+      return;
+    }
+
+    const requirements = subjectNodeHandler.getRequirements(data);
+
+    setColor(stateColors[
+      requirements.every(x => x.data.state === SubjectState.DONE)
+        ? DisplayState.AVAILABLE
+        : DisplayState.UNAVAILABLE
+      ]);
   }
 
   return (
-    <BaseNode style={{backgroundColor: color.bgColor, color: color.fontColor}}>
+    <BaseNode
+      style={{backgroundColor: color.bgColor, color: color.fontColor}}
+      onMouseOverCapture={() => onMouseOver(id)}
+      onMouseOutCapture={() => onMouseOut(id)}
+    >
       <NodeHeader className={'px-3 border-b'}>
         <NodeHeaderIcon>
           <Typography fontSize={'smaller'} fontWeight={'bold'}>{data.period}</Typography>
@@ -70,11 +92,13 @@ export default function SubjectBox(
               value={selectedState.toString()}
               onValueChange={(newState) => setSelectedState(parseInt(newState))}
             >
-              {Object.values(SelectableStates).map((state, index) => (
-                <DropdownMenuRadioItem key={index} value={state.toString()}>
-                  {getStateName(state)}
-                </DropdownMenuRadioItem>
-              ))}
+              {Object.values(SubjectState)
+                .filter(x => typeof x === 'number')
+                .map((state, index) => (
+                  <DropdownMenuRadioItem key={index} value={state.toString()}>
+                    {getStateName(state)}
+                  </DropdownMenuRadioItem>
+                ))}
             </DropdownMenuRadioGroup>
           </NodeHeaderMenuAction>
         </NodeHeaderActions>
