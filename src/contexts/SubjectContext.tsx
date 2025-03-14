@@ -1,14 +1,13 @@
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import Subject from "@/_infra/entities/Subject";
 import { Edge, Node, OnEdgesChange, OnNodesChange, useEdgesState, useNodesState } from "@xyflow/react";
 import { SubjectState } from "@/_infra/enums/SubjectState";
+import subjects from "@/_data/subjects";
+import { createNode } from "@/_infra/entities/flowEntitiesHandlers/nodeHandler";
+import SubjectBox from "@/pages/components/SubjectBox";
 
 interface SubjectContextType {
-  subjectsHandlers: {
-    subjects: Subject[];
-    setSubjects: React.Dispatch<React.SetStateAction<Subject[]>>;
-    onSubjectStateChange: (subject: Subject) => void;
-  };
+  onSubjectStateChange: (subject: Subject) => void;
 
   nodesHandlers: {
     nodes: Node<Subject>[];
@@ -26,31 +25,91 @@ interface SubjectContextType {
 const SubjectContext = createContext<SubjectContextType | undefined>(undefined);
 
 export const SubjectProvider = ({children,}: { children: ReactNode }) => {
-  const [subjects, setSubjects] = useState<Subject[]>([]);
+  const [loadedSubjects, setLoadedSubjects] = useState<Subject[]>(subjects);
 
   const [nodes, setNodes, onNodesChange] = useNodesState<Node<Subject>>([]);
 
   const [edges, setEdges, onEdgesChange] = useEdgesState<Edge<any>>([]);
 
-  const onSubjectStateChange = (subject: Subject) => {
-    const nextSubjects = subjects.filter(x => x.requirements.includes(subject.code));
+  // React
+  useEffect(() => {
+    loadSubjectsGroupedByPeriod();
+  }, [loadedSubjects]);
 
-    for (const nextSubject of nextSubjects.filter(x => x.state === SubjectState.UNAVAILABLE)) {
-      const requirements = subjects.filter(x => nextSubject.requirements.includes(x.code));
+  // Methods
+  const loadSubjectsGroupedByPeriod = () => {
+    const grouped = loadedSubjects
+      .reduce((acc, x) => {
+        if (!acc[x.period ?? -1]) {
+          acc[x.period ?? -1] = [];
+        }
 
-      if (requirements.every(x => x.state === SubjectState.DONE))
-        nextSubject.state = SubjectState.AVAILABLE;
+        acc[x.period ?? -1].push(x);
+
+        return acc;
+      }, {} as { [key: number]: Subject[] });
+
+    loadSubjectNodes(grouped);
+  };
+
+  const loadSubjectNodes = (grouped: { [key: number]: Subject[]; }) => {
+    const nodes: Node<Subject>[] = [];
+
+    const xInit = 0;
+    const yInit = 0;
+
+    const xStep = 200;
+    const yStep = 180;
+
+    const yLimit = 800;
+
+    let x = xInit;
+    let y = yInit;
+
+    for (const period of Object.keys(grouped)) {
+      for (const subject of grouped[Number(period)]) {
+        if (y > yLimit) {
+          y = yInit;
+          x += xStep;
+        }
+
+        const node = createNode(subject, {x, y, componentName: SubjectBox.name});
+        nodes.push(node);
+
+        y += yStep;
+      }
+
+      y = yInit;
+      x += xStep * 1.5;
     }
 
-    setSubjects([...subjects]);
+    setNodes(nodes);
+  }
+
+  const onSubjectStateChange = (subject: Subject) => {
+    const updatedNodes = [];
+    const nextNodes = nodes.filter(x => x.data.requirements.includes(subject.code));
+
+    for (const node of nextNodes) {
+      const data = {...node.data};
+      const requirements = nodes.filter(x => data.requirements.includes(x.data.code));
+
+      if (requirements.every(x => x.data.state === SubjectState.DONE)) {
+        data.state = SubjectState.AVAILABLE;
+        updatedNodes.push({...node, data});
+      }
+      else if (requirements.some(x => x.data.state !== SubjectState.DONE)) {
+        data.state = SubjectState.UNAVAILABLE;
+        updatedNodes.push({...node, data});
+      }
+    }
+
+    console.log(nextNodes.map(x => x.data), subject);
+    setNodes([...nodes]);
   }
 
   return <SubjectContext.Provider value={{
-    subjectsHandlers: {
-      subjects,
-      setSubjects,
-      onSubjectStateChange,
-    },
+    onSubjectStateChange,
     nodesHandlers: {
       nodes,
       setNodes,

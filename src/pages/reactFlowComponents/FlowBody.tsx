@@ -33,62 +33,10 @@ export default function FlowBody() {
 
   // React
   useEffect(() => {
-    loadSubjectsGroupedByPeriod();
-  }, []);
-
-  useEffect(() => {
     loadSubjectEdges();
   }, [nodes]);
 
   // Methods
-  const loadSubjectsGroupedByPeriod = () => {
-    const grouped = subjects
-      // .filter(x => [x.code, ...x.requirements].includes('COM06853'))
-      .reduce((acc, x) => {
-        if (!acc[x.period ?? -1]) {
-          acc[x.period ?? -1] = [];
-        }
-        acc[x.period ?? -1].push(x);
-        return acc;
-      }, {} as { [key: number]: Subject[] });
-
-    loadSubjectNodes(grouped);
-  };
-
-  const loadSubjectNodes = (grouped: { [key: number]: Subject[]; }) => {
-    const nodes: Node<Subject>[] = [];
-
-    const xInit = 0;
-    const yInit = 0;
-
-    const xStep = 200;
-    const yStep = 180;
-
-    const yLimit = 800;
-
-    let x = xInit;
-    let y = yInit;
-
-    for (const period of Object.keys(grouped)) {
-      for (const subject of grouped[Number(period)]) {
-        if (y > yLimit) {
-          y = yInit;
-          x += xStep;
-        }
-
-        const node = createNode(subject, {x, y, componentName: SubjectBox.name});
-        nodes.push(node);
-
-        y += yStep;
-      }
-
-      y = yInit;
-      x += xStep * 1.5;
-    }
-
-    setNodes(nodes);
-  }
-
   const onConnect = useCallback((connection: Connection) => {
     const src = nodes.find(n => n.id === connection.source);
     const tgt = nodes.find(n => n.id === connection.target);

@@ -17,27 +17,32 @@ import {
   DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu";
 import { Box, Typography } from "@mui/material";
+import { useSubjectContext } from "@/contexts/SubjectContext";
 
 
 export default function SubjectBox(
   {
-    data: {
-      type,
-      name,
-      code,
-      state,
-      period,
-      requirements,
-    }
+    data
   }: NodeProps<Node<Subject>>) {
+  // Context
+  const { onSubjectStateChange } = useSubjectContext();
+
   // Data
   const [color, setColor] = useState<StateStyles>({bgColor: '', fontColor: ''});
 
-  const [selectedState, setSelectedState] = useState(state);
+  const [selectedState, setSelectedState] = useState(data.state);
+
+  const isFirstRender = React.useRef(true);
 
   // UseEffect
   useEffect(() => {
     loadColor();
+    if (!isFirstRender.current) {
+      data.state = selectedState;
+      onSubjectStateChange(data);
+    } else {
+      isFirstRender.current = false;
+    }
   }, [selectedState]);
 
   // Methods
@@ -49,9 +54,9 @@ export default function SubjectBox(
     <BaseNode style={{backgroundColor: color.bgColor, color: color.fontColor}}>
       <NodeHeader className={'px-3 border-b'}>
         <NodeHeaderIcon>
-          <Typography fontSize={'smaller'} fontWeight={'bold'}>{period}</Typography>
+          <Typography fontSize={'smaller'} fontWeight={'bold'}>{data.period}</Typography>
         </NodeHeaderIcon>
-        <NodeHeaderTitle>{code}</NodeHeaderTitle>
+        <NodeHeaderTitle>{data.code}</NodeHeaderTitle>
         <NodeHeaderActions>
           <NodeHeaderMenuAction label={'Selecionar Estado'}>
             <DropdownMenuLabel>Selecione um estado</DropdownMenuLabel>
@@ -70,9 +75,9 @@ export default function SubjectBox(
         </NodeHeaderActions>
       </NodeHeader>
       <Box width={150} display={'flex'} justifyContent={'center'} alignItems={'center'}>
-        <Typography textAlign={'center'}>{name}</Typography>
+        <Typography textAlign={'center'}>{data.name}</Typography>
       </Box>
-      {requirements.length && <Handle
+      {data.requirements.length && <Handle
           type={'target'}
           position={Position.Left}
           onConnect={(params) => console.error('handle onConnect', params)}
