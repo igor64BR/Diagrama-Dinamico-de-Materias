@@ -1,27 +1,36 @@
-import subjects1 from "@/_data/subjects";
-import Subject from "@/_infra/entities/Subject";
 import { Node } from "@xyflow/react";
 import { createNode } from "@/_infra/entities/flowEntitiesHandlers/nodeHandler";
 import SubjectBox from "@/pages/components/SubjectBox";
+import Subject from "@/_infra/entities/Subject";
+import SubjectRepository from "@/_infra/repositories/subjectRepository";
 
-export default function useSubjectNodesHandler() {
+export interface ISubjectNodesHandler {
+  getAll: () => Node<Subject>[];
+  updateSubjectState: (subject: Subject) => Promise<void>;
+}
+
+export default function useSubjectNodesHandler(subjects: Subject[]) : ISubjectNodesHandler {
+  const repository = new SubjectRepository();
+
   let nodes: Node<Subject>[] = [];
 
   const initialize = () => {
-    initNodes();
+    void initNodes();
   }
 
   const initNodes = () => {
-    const grouped = subjects1
+    const grouped = subjects
       .reduce((acc, x) => {
-        if (!acc[x.period ?? -1]) {
-          acc[x.period ?? -1] = [];
-        }
+          if (!acc[x.period ?? -1]) {
+            acc[x.period ?? -1] = [];
+          }
 
-        acc[x.period ?? -1].push(x);
+          acc[x.period ?? -1].push(x);
 
-        return acc;
-      }, {} as { [key: number]: Subject[] });
+          return acc;
+        },
+        {} as { [key: number]: Subject[] }
+      );
 
     return createNodes(grouped);
   }
@@ -76,42 +85,10 @@ export default function useSubjectNodesHandler() {
     getAll: function () {
       return nodes;
     },
-    getByCode: function(code: string) {
-      const node = nodes.find(x => x.data.code === code);
+    updateSubjectState: async function (subject: Subject) {
+      const updatedSubject = await repository.update(subject.toSupaSubject());
 
-      if (!node) throw new Error(`Node with code ${code} not found`);
-
-      return node;
-    },
-    getRequirements: function (subject: Subject) {
-      return this.getAll()
-        .filter(x => subject.requirements.includes(x.data.code));
-    },
-    getRequirementsTree: function (subject: Subject) {
-      const currentRequirements = this.getRequirements(subject);
-
-      const requirements: Node<Subject>[] = [...currentRequirements];
-
-      for (const requirement of currentRequirements) {
-        requirements.push(...this.getRequirementsTree(requirement.data));
-      }
-
-      return requirements;
-    },
-    getDependentsTree: function (subject: Subject) {
-      const dependents = this.getAll()
-        .filter(x => x.data.requirements.includes(subject.code));
-
-      const dependentsTree: Node<Subject>[] = [...dependents];
-
-      for (const dependent of dependents) {
-        dependentsTree.push(...this.getDependentsTree(dependent.data));
-      }
-
-      return dependentsTree;
-    },
-    updateSubjectState: function (subject: Subject) {
-      const index = nodes.findIndex(x => x.data.code === subject.code);
+      const index = nodes.findIndex(x => x.data.id === subject.id);
 
       nodes[index] = {
         ...nodes[index],

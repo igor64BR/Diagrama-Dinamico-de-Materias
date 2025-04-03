@@ -4,34 +4,27 @@ export type StateStyles = { bgColor: string, fontColor: string }
 // Constants
 export enum SubjectState {
     // Subjects completed already
-    DONE,
+    DONE = "DONE",
 
     // Subjects ongoing
-    ONGOING,
+    ONGOING = "ONGOING",
 
     // Subjects available or not to be taken
-    PENDING,
+    PENDING = "PENDING",
 }
 
 export enum DisplayState {
     // Subjects ongoing
-    ONGOING,
+    ONGOING = "ONGOING",
 
     // Subjects completed already
-    DONE,
+    DONE = "DONE",
 
     // Subjects available or not to be taken
-    AVAILABLE,
+    AVAILABLE = "AVAILABLE",
 
     // Subjects completed already
-    UNAVAILABLE,
-}
-
-export const stateColors: { [key in DisplayState]: StateStyles } = {
-    [DisplayState.AVAILABLE]: {bgColor: 'white', fontColor: 'black'},
-    [DisplayState.UNAVAILABLE]: {bgColor: 'red', fontColor: 'white'},
-    [DisplayState.ONGOING]: {bgColor: 'green', fontColor: 'white'},
-    [DisplayState.DONE]: {bgColor: 'blue', fontColor: 'white'},
+    UNAVAILABLE = "UNAVAILABLE",
 }
 
 const stateNames: { [key in SubjectState]: string } = {

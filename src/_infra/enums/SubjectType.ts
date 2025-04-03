@@ -1,4 +1,4 @@
 export enum SubjectType {
-  MANDATORY,
-  OPTIONAL,
+  MANDATORY = "MANDATORY",
+  OPTIONAL = "OPTIONAL",
 }

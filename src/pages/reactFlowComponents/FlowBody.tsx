@@ -1,44 +1,37 @@
-import { Controls, Edge, Node, ReactFlow, ReactFlowProvider, useEdgesState, useNodesState, } from "@xyflow/react";
-import React, { useEffect } from "react";
+import { Controls, Node, ReactFlow, ReactFlowProvider, useNodesState, } from "@xyflow/react";
+import React, { useEffect, useRef } from "react";
 import FlowBg from "@/pages/reactFlowComponents/FlowBg";
 import FlowMinimap from "@/pages/reactFlowComponents/FlowMinimap";
 import SubjectBox from "../components/SubjectBox";
-import useSubjectNodesHandler from "@/utils/useSubjectNodesHandler";
 import Subject from "@/_infra/entities/Subject";
-import { createEdge } from "@/_infra/entities/flowEntitiesHandlers/edgeHandler";
+import SubjectRepository from "@/_infra/repositories/subjectRepository";
+import useSubjectNodesHandler, { ISubjectNodesHandler } from "@/utils/useSubjectNodesHandler";
+
+const subjectRepository = new SubjectRepository();
 
 export default function FlowBody() {
-  const subjectNodesHandler = useSubjectNodesHandler();
-
   // Data
   const [nodes, setNodes] = useNodesState<Node<Subject>>([]);
-  const [edges, setEdges] = useEdgesState<Edge>([]);
+  const nodesHandler = useRef<ISubjectNodesHandler>({} as any);
 
   // React
   useEffect(() => {
-    loadNodes();
+    void initialize();
   }, []);
+
+  const initialize = async () => {
+    const subjects = await subjectRepository.getAll();
+
+    nodesHandler.current = useSubjectNodesHandler(subjects.map(x => new Subject(x)));
+
+    loadNodes();
+  }
 
   // Methods
   const loadNodes = () => {
-    const nodes = subjectNodesHandler.getAll()
+    const nodes = nodesHandler.current.getAll();
+
     setNodes(nodes);
-
-    const edges = nodes
-      .filter(x => x.data.requirements.length > 0)
-      .map(x => x.data.requirements.map(y => createEdge(
-        nodes.find(x => x.data.code === y)!,
-        x,
-        {type: 'straight', style: {stroke: '#0000'}},
-      ))).flat();
-
-    setEdges(edges);
-  }
-
-  const showEdgeTree = (nodeId: string, show: boolean) => {
-    // requirements side
-
-    // dependents side
   }
 
   return (
@@ -46,7 +39,6 @@ export default function FlowBody() {
       <ReactFlow
         style={{color: 'black'}}
         nodes={nodes}
-        edges={edges}
         nodeTypes={{
           [SubjectBox.name]: (props) => (
             <SubjectBox
@@ -62,9 +54,10 @@ export default function FlowBody() {
               selectable={false}
               deletable={false}
               selected={false}
+              repository={subjectRepository}
               onStateChange={() => loadNodes()}
-              onMouseOver={(id) => showEdgeTree(id, true)}
-              onMouseOut={(id) => showEdgeTree(id, false)}
+              onMouseOver={(id) => {}}
+              onMouseOut={(id) => {}}
             />
           )
         }}

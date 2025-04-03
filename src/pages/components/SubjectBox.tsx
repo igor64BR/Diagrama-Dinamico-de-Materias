@@ -1,7 +1,7 @@
-import { Handle, Node, NodeProps, Position } from "@xyflow/react";
+import { Node, NodeProps } from "@xyflow/react";
 import Subject from "@/_infra/entities/Subject";
 import React, { useEffect, useState } from "react";
-import { DisplayState, getStateName, stateColors, StateStyles, SubjectState } from "@/_infra/enums/SubjectState";
+import { DisplayState, getStateName, StateStyles, SubjectState } from "@/_infra/enums/SubjectState";
 import { BaseNode } from "@/components/base-node";
 import {
   NodeHeader,
@@ -17,13 +17,21 @@ import {
   DropdownMenuSeparator
 } from "@/components/ui/dropdown-menu";
 import { Box, Typography } from "@mui/material";
-import useSubjectNodesHandler from "@/utils/useSubjectNodesHandler";
+import SubjectRepository from "@/_infra/repositories/subjectRepository";
 
 type SubjectBoxProps = NodeProps<Node<Subject>> & {
   onStateChange: () => void;
   onMouseOver: (nodeId: string) => void;
   onMouseOut: (nodeId: string) => void;
+  repository: SubjectRepository;
 };
+
+const stateColors: { [key in DisplayState]: StateStyles } = {
+  [DisplayState.AVAILABLE]: {bgColor: 'white', fontColor: 'black'},
+  [DisplayState.UNAVAILABLE]: {bgColor: 'red', fontColor: 'white'},
+  [DisplayState.DONE]: {bgColor: 'green', fontColor: 'white'},
+  [DisplayState.ONGOING]: {bgColor: 'blue', fontColor: 'white'},
+}
 
 export default function SubjectBox(
   {
@@ -32,45 +40,50 @@ export default function SubjectBox(
     onStateChange,
     onMouseOver,
     onMouseOut,
+    repository,
   }: SubjectBoxProps
 ) {
-  const subjectNodeHandler = useSubjectNodesHandler();
-
   // Data
   const [color, setColor] = useState<StateStyles>({bgColor: '', fontColor: ''});
 
   const [selectedState, setSelectedState] = useState(data.state);
 
-  const isFirstRender = React.useRef(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   // UseEffect
   useEffect(() => {
-    loadColor();
-
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-
     data.state = selectedState;
-    subjectNodeHandler.updateSubjectState(data);
     onStateChange();
+    void loadColor();
   }, [selectedState]);
 
   // Methods
-  const loadColor = () => {
+  const loadColor = async () => {
     if (selectedState !== SubjectState.PENDING) {
+      console.log("Style:", selectedState, stateColors[selectedState]);
       setColor(stateColors[selectedState]);
       return;
     }
 
-    const requirements = subjectNodeHandler.getRequirements(data);
+    setIsLoading(true);
 
-    setColor(stateColors[
-      requirements.every(x => x.data.state === SubjectState.DONE)
-        ? DisplayState.AVAILABLE
-        : DisplayState.UNAVAILABLE
-      ]);
+    const requirements = await repository.getManyById(data.requirementsIds);
+
+    const pendingState = requirements.every(x => x.state === SubjectState.DONE)
+      ? DisplayState.AVAILABLE
+      : DisplayState.UNAVAILABLE;
+
+    setColor(stateColors[pendingState]);
+
+    setIsLoading(false);
+  }
+
+  if (isLoading) {
+    return (
+      <BaseNode>
+        <Typography>Carregando...</Typography>
+      </BaseNode>
+    );
   }
 
   return (
@@ -89,11 +102,9 @@ export default function SubjectBox(
             <DropdownMenuLabel>Selecione um estado</DropdownMenuLabel>
             <DropdownMenuSeparator/>
             <DropdownMenuRadioGroup
-              value={selectedState.toString()}
-              onValueChange={(newState) => setSelectedState(parseInt(newState))}
-            >
+              value={selectedState}
+              onValueChange={(newState: string) => setSelectedState(newState as SubjectState)}            >
               {Object.values(SubjectState)
-                .filter(x => typeof x === 'number')
                 .map((state, index) => (
                   <DropdownMenuRadioItem key={index} value={state.toString()}>
                     {getStateName(state)}
@@ -104,17 +115,8 @@ export default function SubjectBox(
         </NodeHeaderActions>
       </NodeHeader>
       <Box width={150} display={'flex'} justifyContent={'center'} alignItems={'center'}>
-        <Typography textAlign={'center'}>{data.name}</Typography>
+        <Typography textAlign={'center'}>{data.title}</Typography>
       </Box>
-      {data.requirements.length && <Handle
-          type={'target'}
-          position={Position.Left}
-          onConnect={(params) => console.error('handle onConnect', params)}
-      />}
-      <Handle
-        type={'source'}
-        position={Position.Right}
-      />
     </BaseNode>
   );
 }
