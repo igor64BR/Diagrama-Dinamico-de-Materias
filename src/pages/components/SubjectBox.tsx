@@ -103,7 +103,7 @@ export default function SubjectBox(
             <DropdownMenuSeparator/>
             <DropdownMenuRadioGroup
               value={selectedState}
-              onValueChange={(newState: string) => setSelectedState(newState as SubjectState)}            >
+              onValueChange={(newState: string) => setSelectedState(newState as SubjectState)}>
               {Object.values(SubjectState)
                 .map((state, index) => (
                   <DropdownMenuRadioItem key={index} value={state.toString()}>

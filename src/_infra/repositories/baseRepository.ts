@@ -2,10 +2,11 @@ import { PostgrestQueryBuilder } from "@supabase/postgrest-js";
 import supabase from "@/_infra/supabase/clientSSR";
 
 export default abstract class BaseRepository<T> {
-  protected table: PostgrestQueryBuilder<any, any, string, unknown>;
+  protected get table() {
+    return supabase.from(this.tableName);
+  }
 
   protected constructor(private readonly tableName: string) {
-    this.table = supabase.from(tableName);
   }
 
   public async getAll(): Promise<T[]> {
