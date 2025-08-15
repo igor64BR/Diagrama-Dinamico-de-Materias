@@ -9,7 +9,7 @@ const subjects: Subject[] = [
         name: "INTRODUÇÃO À INFORMÁTICA",
         requirements: [],
         type: SubjectType.MANDATORY,
-        state: SubjectState.ONGOING
+        state: SubjectState.DONE
     },
     {
         code: "COM06852",
@@ -17,7 +17,7 @@ const subjects: Subject[] = [
         name: "INTRODUÇÃO AOS SISTEMAS DE INFORMAÇÃO",
         requirements: [],
         type: SubjectType.MANDATORY,
-        state: SubjectState.ONGOING
+        state: SubjectState.DONE
     },
     {
         code: "COM06853",
@@ -25,7 +25,7 @@ const subjects: Subject[] = [
         name: "LÓGICA COMPUTACIONAL",
         requirements: [],
         type: SubjectType.MANDATORY,
-        state: SubjectState.ONGOING
+        state: SubjectState.DONE
     },
     {
         code: "ENG06854",
@@ -33,7 +33,7 @@ const subjects: Subject[] = [
         name: "PORTUGUÊS INSTRUMENTAL",
         requirements: [],
         type: SubjectType.MANDATORY,
-        state: SubjectState.ONGOING
+        state: SubjectState.DONE
     },
     {
         code: "COM06842",
@@ -65,7 +65,7 @@ const subjects: Subject[] = [
         name: "INGLÊS INSTRUMENTAL",
         requirements: [],
         type: SubjectType.MANDATORY,
-        state: SubjectState.ONGOING
+        state: SubjectState.DONE
     },
     {
         code: "COM06851",
@@ -73,7 +73,7 @@ const subjects: Subject[] = [
         name: "MATEMÁTICA DISCRETA",
         requirements: [],
         type: SubjectType.MANDATORY,
-        state: SubjectState.PENDING
+        state: SubjectState.ONGOING
     },
     {
         code: "COM06985",
@@ -81,7 +81,7 @@ const subjects: Subject[] = [
         name: "TEORIA GERAL DOS SISTEMAS",
         requirements: ["COM06852"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.PENDING
+        state: SubjectState.ONGOING
     },
     {
         code: "COM06984",
@@ -89,7 +89,7 @@ const subjects: Subject[] = [
         name: "FUNDAMENTOS DE PROGRAMAÇÃO WEB",
         requirements: ["COM06847"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.PENDING
+        state: SubjectState.ONGOING
     },
     {
         code: "MPA06855",
@@ -113,7 +113,7 @@ const subjects: Subject[] = [
         name: "ENGENHARIA DE SOFTWARE",
         requirements: ["COM06842"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.PENDING
+        state: SubjectState.ONGOING
     },
     {
         code: "COM06992",
@@ -137,7 +137,7 @@ const subjects: Subject[] = [
         name: "ARQUITETURA DE COMPUTADORES",
         requirements: ["COM06842"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.ONGOING
+        state: SubjectState.DONE
     },
     {
         code: "ENG05510",
@@ -217,7 +217,7 @@ const subjects: Subject[] = [
         name: "DIREITO E LEGISLAÇÃO",
         requirements: [],
         type: SubjectType.MANDATORY,
-        state: SubjectState.PENDING
+        state: SubjectState.ONGOING
     },
     {
         code: "COM10733",
