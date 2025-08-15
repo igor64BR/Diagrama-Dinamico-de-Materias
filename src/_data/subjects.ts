@@ -73,7 +73,7 @@ const subjects: Subject[] = [
         name: "MATEMÁTICA DISCRETA",
         requirements: [],
         type: SubjectType.MANDATORY,
-        state: SubjectState.ONGOING
+        state: SubjectState.DONE
     },
     {
         code: "COM06985",
@@ -81,7 +81,7 @@ const subjects: Subject[] = [
         name: "TEORIA GERAL DOS SISTEMAS",
         requirements: ["COM06852"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.ONGOING
+        state: SubjectState.DONE
     },
     {
         code: "COM06984",
@@ -89,7 +89,7 @@ const subjects: Subject[] = [
         name: "FUNDAMENTOS DE PROGRAMAÇÃO WEB",
         requirements: ["COM06847"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.ONGOING
+        state: SubjectState.DONE
     },
     {
         code: "MPA06855",
@@ -105,7 +105,7 @@ const subjects: Subject[] = [
         name: "COMPUTABILIDADE E COMPLEXIDADE",
         requirements: ["COM06851"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.PENDING
+        state: SubjectState.ONGOING
     },
     {
         code: "COM10015",
@@ -113,7 +113,7 @@ const subjects: Subject[] = [
         name: "ENGENHARIA DE SOFTWARE",
         requirements: ["COM06842"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.ONGOING
+        state: SubjectState.DONE
     },
     {
         code: "COM06992",
@@ -121,7 +121,7 @@ const subjects: Subject[] = [
         name: "ESTRUTURAS DE DADOS I",
         requirements: ["COM06842"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.PENDING
+        state: SubjectState.ONGOING
     },
     {
         code: "COM10016",
@@ -129,7 +129,7 @@ const subjects: Subject[] = [
         name: "SISTEMAS DE APOIO À DECISÃO",
         requirements: ["COM06985"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.PENDING
+        state: SubjectState.ONGOING
     },
     {
         code: "COM10076",
@@ -169,7 +169,7 @@ const subjects: Subject[] = [
         name: "ENGENHARIA DE REQUISITOS DE SOFTWARE",
         requirements: ["COM10015"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.PENDING
+        state: SubjectState.ONGOING
     },
     {
         code: "COM10129",
@@ -217,7 +217,7 @@ const subjects: Subject[] = [
         name: "DIREITO E LEGISLAÇÃO",
         requirements: [],
         type: SubjectType.MANDATORY,
-        state: SubjectState.ONGOING
+        state: SubjectState.DONE
     },
     {
         code: "COM10733",
@@ -233,7 +233,7 @@ const subjects: Subject[] = [
         name: "METODOLOGIA DE PESQUISA EM INFORMÁTICA",
         requirements: ["ENG06854"],
         type: SubjectType.MANDATORY,
-        state: SubjectState.PENDING
+        state: SubjectState.ONGOING
     },
     {
         code: "COM10393",
